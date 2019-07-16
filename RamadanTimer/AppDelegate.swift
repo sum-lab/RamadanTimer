@@ -8,15 +8,34 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
+    let center = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // set default settings
+        if !UserDefaults.standard.bool(forKey: "hasLaunchedOnce") {
+            UserDefaults.standard.set(true, forKey: "hasLaunchedOnce")
+            UserSettings.shared.setDefaults()
+            saveCities()
+        }
+        
+        // Ask for authorization for notifications
+
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        center.requestAuthorization(options: options) {
+            (granted, error) in
+            if !granted {
+                UserSettings.shared.notifications = false
+            }
+        }
+        center.delegate = self
+        
         return true
     }
 
@@ -42,6 +61,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    /// Schedules notification with given title and sound
+    func scheduleNotification(title: String, sound: String, date: Date) {
+        let today = Date()
+        
+        if today < date {
+            let content = UNMutableNotificationContent()
+            content.body = title
+            content.sound = UNNotificationSound.init(named: sound)
+            let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+            // set date string as identifier
+            let identifier = stringFromDate(formatString: "dd-mm-ss", date: date)!
+            let request = UNNotificationRequest(identifier: identifier,
+                                                content: content, trigger: trigger)
+            center.add(request, withCompletionHandler: { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+            })
+        }
+    }
+    
+    /// Notification center delegate
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.sound, .alert])
     }
 
     // MARK: - Core Data stack
@@ -80,14 +126,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if context.hasChanges {
             do {
                 try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
             }
         }
     }
-
+    
+    /// Save cities information to Core Data. Runs asynchronously in background
+    func saveCities(){
+        persistentContainer.performBackgroundTask { managedContext in
+            // read file into string
+            let fileURL = Bundle.main.url(forResource: "Cities", withExtension: "csv")!
+            let fileString = try! String(contentsOf: fileURL, encoding: .utf8)
+            let allLines = fileString.components(separatedBy: "\n")
+            for line in allLines {
+                if line != "" {
+                    let components = line.components(separatedBy: ",")
+                    // 2
+                    let entity = NSEntityDescription.entity(forEntityName: "City",
+                                                            in: managedContext)!
+                    let city = NSManagedObject(entity: entity,
+                                               insertInto: managedContext) as! City
+                    
+                    // 3
+                    city.setValue(components[0], forKeyPath: "name")
+                    city.setValue(Double(components[2]), forKeyPath: "latitude")
+                    city.setValue(Double(components[3]), forKeyPath: "longitude")
+                    city.setValue(components[5], forKeyPath: "country")
+                }
+                do {
+                    try managedContext.save()
+                } catch let error as NSError {
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
+            }
+        }
+    }
+    
+    /// get cities from core data
+    func getCities() -> [NSManagedObject]? {
+        let managedContext = persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "City")
+        
+        do {
+            let cities = try managedContext.fetch(fetchRequest)
+            return cities
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return nil
+        }
+    }
 }
 

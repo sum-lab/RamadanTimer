@@ -7,23 +7,77 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29084D3B1EFD4B5C001E6848 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29084D3A1EFD4B5C001E6848 /* SettingsTableViewController.swift */; };
+		29084D3D1EFE9175001E6848 /* CalculationMethodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29084D3C1EFE9175001E6848 /* CalculationMethodsTableViewController.swift */; };
+		294F99E31FC70D9200925A89 /* LocationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294F99E21FC70D9200925A89 /* LocationUtil.swift */; };
+		296A7A941F795F9C00F3B608 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296A7A931F795F9C00F3B608 /* PickerViewController.swift */; };
+		297777FE1ECAF79B00E21949 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 297777FD1ECAF79B00E21949 /* CoreLocation.framework */; };
+		29B8BB5D1EDE0223006E3FD0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B8BB5C1EDE0223006E3FD0 /* CalendarViewController.swift */; };
 		29CFF8A01D964A0800AA3652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CFF89F1D964A0800AA3652 /* AppDelegate.swift */; };
 		29CFF8A21D964A0900AA3652 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CFF8A11D964A0900AA3652 /* ViewController.swift */; };
 		29CFF8A51D964A0900AA3652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8A31D964A0900AA3652 /* Main.storyboard */; };
-		29CFF8A81D964A0900AA3652 /* RamadanTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29CFF8A61D964A0900AA3652 /* RamadanTimer.xcdatamodeld */; };
 		29CFF8AA1D964A0900AA3652 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8A91D964A0900AA3652 /* Assets.xcassets */; };
 		29CFF8AD1D964A0900AA3652 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8AB1D964A0900AA3652 /* LaunchScreen.storyboard */; };
+		29CFF8B51D964A7700AA3652 /* SuhurandIftarCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CFF8B41D964A7700AA3652 /* SuhurandIftarCalculator.swift */; };
+		29CFF8BC1D964F4300AA3652 /* Cities.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8B61D964F4300AA3652 /* Cities.tsv */; };
+		29CFF8BD1D964F4300AA3652 /* stopeating.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8B71D964F4300AA3652 /* stopeating.mp3 */; };
+		29CFF8BE1D964F4300AA3652 /* tenminutesleft.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8B81D964F4300AA3652 /* tenminutesleft.mp3 */; };
+		29CFF8BF1D964F4300AA3652 /* thirtyminutesleft.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8B91D964F4300AA3652 /* thirtyminutesleft.mp3 */; };
+		29CFF8C01D964F4300AA3652 /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8BA1D964F4300AA3652 /* tick.wav */; };
+		29CFF8C11D964F4300AA3652 /* twentyminutesleft.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8BB1D964F4300AA3652 /* twentyminutesleft.mp3 */; };
+		29CFF8C31D964FA800AA3652 /* oneminuteleft.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8C21D964FA800AA3652 /* oneminuteleft.mp3 */; };
+		29CFF8C51D964FC200AA3652 /* fiveminutesleft.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8C41D964FC200AA3652 /* fiveminutesleft.mp3 */; };
+		29CFF8C71D964FCC00AA3652 /* breakfast.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 29CFF8C61D964FCC00AA3652 /* breakfast.mp3 */; };
+		29CFF8CA1D965ED500AA3652 /* HelpfulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CFF8C91D965ED500AA3652 /* HelpfulFunctions.swift */; };
+		29D18B8A1EF2D525002639E7 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D18B891EF2D525002639E7 /* Alarm.swift */; };
+		29D18B8C1EF2D64C002639E7 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D18B8B1EF2D64C002639E7 /* AlarmManager.swift */; };
+		29D18B8E1EF409A0002639E7 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D18B8D1EF409A0002639E7 /* CustomCollectionViewLayout.swift */; };
+		29D18B921EF6841F002639E7 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D18B911EF6841F002639E7 /* TextCell.swift */; };
+		29D8995C20DD241300D42F20 /* HighLatFajrMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D8995B20DD241300D42F20 /* HighLatFajrMethodViewController.swift */; };
+		29D8996420DFED7900D42F20 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D8996320DFED7900D42F20 /* LocationSearchViewController.swift */; };
+		29D8996A20DFFCD600D42F20 /* RamadanTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29D8996820DFFCD600D42F20 /* RamadanTimer.xcdatamodeld */; };
+		29D8996C20E91C4E00D42F20 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D8996B20E91C4E00D42F20 /* LocationDetailViewController.swift */; };
+		29D8997020E929EB00D42F20 /* Cities.csv in Resources */ = {isa = PBXBuildFile; fileRef = 29D8996F20E929EA00D42F20 /* Cities.csv */; };
+		29D8DFD21EDAEB2500427359 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D8DFD11EDAEB2500427359 /* UserSettings.swift */; };
+		29FC56961EF83AD700B1D443 /* SimpleImageSlideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC56951EF83AD700B1D443 /* SimpleImageSlideshow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29084D3A1EFD4B5C001E6848 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		29084D3C1EFE9175001E6848 /* CalculationMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationMethodsTableViewController.swift; sourceTree = "<group>"; };
+		294F99E21FC70D9200925A89 /* LocationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtil.swift; sourceTree = "<group>"; };
+		296A7A931F795F9C00F3B608 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		297777FD1ECAF79B00E21949 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		29B8BB5C1EDE0223006E3FD0 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		29CFF89C1D964A0800AA3652 /* RamadanTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RamadanTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29CFF89F1D964A0800AA3652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29CFF8A11D964A0900AA3652 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		29CFF8A41D964A0900AA3652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		29CFF8A71D964A0900AA3652 /* RamadanTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RamadanTimer.xcdatamodel; sourceTree = "<group>"; };
 		29CFF8A91D964A0900AA3652 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29CFF8AC1D964A0900AA3652 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29CFF8AE1D964A0900AA3652 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29CFF8B41D964A7700AA3652 /* SuhurandIftarCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuhurandIftarCalculator.swift; sourceTree = "<group>"; };
+		29CFF8B61D964F4300AA3652 /* Cities.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cities.tsv; sourceTree = "<group>"; };
+		29CFF8B71D964F4300AA3652 /* stopeating.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stopeating.mp3; sourceTree = "<group>"; };
+		29CFF8B81D964F4300AA3652 /* tenminutesleft.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tenminutesleft.mp3; sourceTree = "<group>"; };
+		29CFF8B91D964F4300AA3652 /* thirtyminutesleft.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thirtyminutesleft.mp3; sourceTree = "<group>"; };
+		29CFF8BA1D964F4300AA3652 /* tick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tick.wav; sourceTree = "<group>"; };
+		29CFF8BB1D964F4300AA3652 /* twentyminutesleft.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = twentyminutesleft.mp3; sourceTree = "<group>"; };
+		29CFF8C21D964FA800AA3652 /* oneminuteleft.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oneminuteleft.mp3; sourceTree = "<group>"; };
+		29CFF8C41D964FC200AA3652 /* fiveminutesleft.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fiveminutesleft.mp3; sourceTree = "<group>"; };
+		29CFF8C61D964FCC00AA3652 /* breakfast.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = breakfast.mp3; sourceTree = "<group>"; };
+		29CFF8C91D965ED500AA3652 /* HelpfulFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpfulFunctions.swift; sourceTree = "<group>"; };
+		29D18B891EF2D525002639E7 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		29D18B8B1EF2D64C002639E7 /* AlarmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
+		29D18B8D1EF409A0002639E7 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
+		29D18B911EF6841F002639E7 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
+		29D8995B20DD241300D42F20 /* HighLatFajrMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLatFajrMethodViewController.swift; sourceTree = "<group>"; };
+		29D8996320DFED7900D42F20 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		29D8996920DFFCD600D42F20 /* RamadanTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RamadanTimer.xcdatamodel; sourceTree = "<group>"; };
+		29D8996B20E91C4E00D42F20 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
+		29D8996F20E929EA00D42F20 /* Cities.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cities.csv; path = ../../../Downloads/Cities.csv; sourceTree = "<group>"; };
+		29D8DFD11EDAEB2500427359 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		29FC56951EF83AD700B1D443 /* SimpleImageSlideshow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageSlideshow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +85,69 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				297777FE1ECAF79B00E21949 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29084D3E1EFFC612001E6848 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				29084D3A1EFD4B5C001E6848 /* SettingsTableViewController.swift */,
+				29084D3C1EFE9175001E6848 /* CalculationMethodsTableViewController.swift */,
+				296A7A931F795F9C00F3B608 /* PickerViewController.swift */,
+				29D8995B20DD241300D42F20 /* HighLatFajrMethodViewController.swift */,
+				29D8996320DFED7900D42F20 /* LocationSearchViewController.swift */,
+				29D8996B20E91C4E00D42F20 /* LocationDetailViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		294F99E11FC70D4A00925A89 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				29D18B8B1EF2D64C002639E7 /* AlarmManager.swift */,
+				294F99E21FC70D9200925A89 /* LocationUtil.swift */,
+				29D8DFD11EDAEB2500427359 /* UserSettings.swift */,
+				29CFF8B41D964A7700AA3652 /* SuhurandIftarCalculator.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		297777FC1ECAF79B00E21949 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				297777FD1ECAF79B00E21949 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		29B8BB5B1EDE01DB006E3FD0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				29CFF8A11D964A0900AA3652 /* ViewController.swift */,
+				29B8BB5C1EDE0223006E3FD0 /* CalendarViewController.swift */,
+				29084D3E1EFFC612001E6848 /* Settings */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		29CA29621FD90B87009036D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				29D18B891EF2D525002639E7 /* Alarm.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		29CFF8931D964A0800AA3652 = {
 			isa = PBXGroup;
 			children = (
 				29CFF89E1D964A0800AA3652 /* RamadanTimer */,
 				29CFF89D1D964A0800AA3652 /* Products */,
+				297777FC1ECAF79B00E21949 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +162,55 @@
 		29CFF89E1D964A0800AA3652 /* RamadanTimer */ = {
 			isa = PBXGroup;
 			children = (
+				29CFF8C91D965ED500AA3652 /* HelpfulFunctions.swift */,
 				29CFF89F1D964A0800AA3652 /* AppDelegate.swift */,
-				29CFF8A11D964A0900AA3652 /* ViewController.swift */,
-				29CFF8A31D964A0900AA3652 /* Main.storyboard */,
-				29CFF8A91D964A0900AA3652 /* Assets.xcassets */,
-				29CFF8AB1D964A0900AA3652 /* LaunchScreen.storyboard */,
-				29CFF8AE1D964A0900AA3652 /* Info.plist */,
-				29CFF8A61D964A0900AA3652 /* RamadanTimer.xcdatamodeld */,
+				29CA29621FD90B87009036D2 /* Model */,
+				294F99E11FC70D4A00925A89 /* Utils */,
+				29B8BB5B1EDE01DB006E3FD0 /* View Controllers */,
+				29D18B8F1EF409CE002639E7 /* Storyboards */,
+				29D18B901EF40A07002639E7 /* Custom Views/Layouts */,
+				29CFF8C81D964FE500AA3652 /* Resources */,
 			);
 			path = RamadanTimer;
+			sourceTree = "<group>";
+		};
+		29CFF8C81D964FE500AA3652 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				29D8996820DFFCD600D42F20 /* RamadanTimer.xcdatamodeld */,
+				29CFF8AE1D964A0900AA3652 /* Info.plist */,
+				29CFF8A91D964A0900AA3652 /* Assets.xcassets */,
+				29CFF8B61D964F4300AA3652 /* Cities.tsv */,
+				29D8996F20E929EA00D42F20 /* Cities.csv */,
+				29CFF8B71D964F4300AA3652 /* stopeating.mp3 */,
+				29CFF8B81D964F4300AA3652 /* tenminutesleft.mp3 */,
+				29CFF8B91D964F4300AA3652 /* thirtyminutesleft.mp3 */,
+				29CFF8C21D964FA800AA3652 /* oneminuteleft.mp3 */,
+				29CFF8C61D964FCC00AA3652 /* breakfast.mp3 */,
+				29CFF8C41D964FC200AA3652 /* fiveminutesleft.mp3 */,
+				29CFF8BB1D964F4300AA3652 /* twentyminutesleft.mp3 */,
+				29CFF8BA1D964F4300AA3652 /* tick.wav */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29D18B8F1EF409CE002639E7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				29CFF8AB1D964A0900AA3652 /* LaunchScreen.storyboard */,
+				29CFF8A31D964A0900AA3652 /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		29D18B901EF40A07002639E7 /* Custom Views/Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				29D18B8D1EF409A0002639E7 /* CustomCollectionViewLayout.swift */,
+				29D18B911EF6841F002639E7 /* TextCell.swift */,
+				29FC56951EF83AD700B1D443 /* SimpleImageSlideshow.swift */,
+			);
+			name = "Custom Views/Layouts";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,12 +240,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Sumayyah;
 				TargetAttributes = {
 					29CFF89B1D964A0800AA3652 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = LFQH4LZUKK;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -127,8 +274,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29CFF8BD1D964F4300AA3652 /* stopeating.mp3 in Resources */,
+				29D8997020E929EB00D42F20 /* Cities.csv in Resources */,
+				29CFF8BE1D964F4300AA3652 /* tenminutesleft.mp3 in Resources */,
+				29CFF8C71D964FCC00AA3652 /* breakfast.mp3 in Resources */,
+				29CFF8BC1D964F4300AA3652 /* Cities.tsv in Resources */,
+				29CFF8C01D964F4300AA3652 /* tick.wav in Resources */,
+				29CFF8C31D964FA800AA3652 /* oneminuteleft.mp3 in Resources */,
+				29CFF8C51D964FC200AA3652 /* fiveminutesleft.mp3 in Resources */,
 				29CFF8AD1D964A0900AA3652 /* LaunchScreen.storyboard in Resources */,
 				29CFF8AA1D964A0900AA3652 /* Assets.xcassets in Resources */,
+				29CFF8C11D964F4300AA3652 /* twentyminutesleft.mp3 in Resources */,
+				29CFF8BF1D964F4300AA3652 /* thirtyminutesleft.mp3 in Resources */,
 				29CFF8A51D964A0900AA3652 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,9 +297,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29CFF8A81D964A0900AA3652 /* RamadanTimer.xcdatamodeld in Sources */,
+				29CFF8CA1D965ED500AA3652 /* HelpfulFunctions.swift in Sources */,
+				294F99E31FC70D9200925A89 /* LocationUtil.swift in Sources */,
+				29D18B8A1EF2D525002639E7 /* Alarm.swift in Sources */,
+				29D8DFD21EDAEB2500427359 /* UserSettings.swift in Sources */,
 				29CFF8A21D964A0900AA3652 /* ViewController.swift in Sources */,
+				29CFF8B51D964A7700AA3652 /* SuhurandIftarCalculator.swift in Sources */,
+				29D8996420DFED7900D42F20 /* LocationSearchViewController.swift in Sources */,
 				29CFF8A01D964A0800AA3652 /* AppDelegate.swift in Sources */,
+				29FC56961EF83AD700B1D443 /* SimpleImageSlideshow.swift in Sources */,
+				29D18B921EF6841F002639E7 /* TextCell.swift in Sources */,
+				29D8996A20DFFCD600D42F20 /* RamadanTimer.xcdatamodeld in Sources */,
+				29D8995C20DD241300D42F20 /* HighLatFajrMethodViewController.swift in Sources */,
+				29D8996C20E91C4E00D42F20 /* LocationDetailViewController.swift in Sources */,
+				296A7A941F795F9C00F3B608 /* PickerViewController.swift in Sources */,
+				29084D3D1EFE9175001E6848 /* CalculationMethodsTableViewController.swift in Sources */,
+				29B8BB5D1EDE0223006E3FD0 /* CalendarViewController.swift in Sources */,
+				29084D3B1EFD4B5C001E6848 /* SettingsTableViewController.swift in Sources */,
+				29D18B8E1EF409A0002639E7 /* CustomCollectionViewLayout.swift in Sources */,
+				29D18B8C1EF2D64C002639E7 /* AlarmManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,15 +350,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -227,15 +409,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -268,9 +459,10 @@
 				DEVELOPMENT_TEAM = LFQH4LZUKK;
 				INFOPLIST_FILE = RamadanTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sumayyah.RamadanTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.technonstop.RamadanTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -281,9 +473,10 @@
 				DEVELOPMENT_TEAM = LFQH4LZUKK;
 				INFOPLIST_FILE = RamadanTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sumayyah.RamadanTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.technonstop.RamadanTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -306,16 +499,17 @@
 				29CFF8B31D964A0900AA3652 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		29CFF8A61D964A0900AA3652 /* RamadanTimer.xcdatamodeld */ = {
+		29D8996820DFFCD600D42F20 /* RamadanTimer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				29CFF8A71D964A0900AA3652 /* RamadanTimer.xcdatamodel */,
+				29D8996920DFFCD600D42F20 /* RamadanTimer.xcdatamodel */,
 			);
-			currentVersion = 29CFF8A71D964A0900AA3652 /* RamadanTimer.xcdatamodel */;
+			currentVersion = 29D8996920DFFCD600D42F20 /* RamadanTimer.xcdatamodel */;
 			path = RamadanTimer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
