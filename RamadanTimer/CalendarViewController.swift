@@ -36,6 +36,12 @@ class CalendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         collectionView.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // flash scroll indicators to indicate scrollable content
+        collectionView.flashScrollIndicators()
+    }
+    
     /// the no. of days in current month
     func noOfDaysInMonth() -> Int {
         let range = hijriCalendar.range(of: .day, in: .month, for: date)

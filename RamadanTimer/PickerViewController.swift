@@ -86,7 +86,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             UserSettings.shared.hijriDateAdjustment = row - 10
         }
         // schedule notifications again
-        AlarmManager.shared.scheduleAllNotificationsIfNeeded()
+        AlarmManager.shared.update()
+        
     }
 
     /*

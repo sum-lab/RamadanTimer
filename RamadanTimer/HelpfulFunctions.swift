@@ -17,7 +17,7 @@ func dateFrom(day: Int, year: Int, hours: Double = 0) -> Date! {
     var comps = DateComponents()
     comps.year = year
     comps.day = day
-    let seconds = Int(hours * 3600)
+    let seconds = Int(ceil(hours * 3600))
     comps.second = seconds
     return calendar.date(from: comps)
 }
@@ -96,29 +96,12 @@ func locationNameFromCoordinates(location: CLLocation, completion: @escaping (St
     })
 }
 
+/// returns string from "+x" or "-x" for timing adjustments
 func stringFromAdjustment(_ adjustment: Int) -> String {
     return adjustment > 0 ? "+\(adjustment)" : "\(adjustment)"
 }
 
-// MARK: - Table View controller extension
-extension UITableViewController {
-    
-    /// check cell and decheck all other cells
-    func checkCellAtIndexPath(_ indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        for i in 0..<tableView.numberOfRows(inSection: 0) {
-            if i != indexPath.row {
-                tableView.cellForRow(at: IndexPath(row: i, section: 0))?.accessoryType = .none
-            }
-        }
-    }
-}
-
-// MARK: - Double extension
-extension Double
-{
-    func truncate(places : Int)-> Double
-    {
-        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
-    }
+/// get device screen height
+func screenHeight() -> CGFloat {
+    return UIScreen.main.bounds.size.height
 }

@@ -27,6 +27,8 @@ let fajrAngleKey = "selectedFajrAngle"
 let highLatitudeFajrMethodKey = "fajrMethod"
 let notificationsKey = "notifications"
 let hijriDateAdjustmentKey = "hijriDateAdjustment"
+let timeIntervalsSuhurKey = "timeIntervalsForSuhur"
+let timeIntervalsIftarKey = "timeIntervalsForIftar"
 
 var calcMethods = [univOfIslamicSciencesKarachiKey: 18.0, muslimWorldLeagueKey: 18.0, ummulQuraUnivMakkahKey: 19.0, islamicSocietyOfNorthAmericaKey: 15.0, egyptianGeneralAuthorityOfSurveyKey: 19.5, universityOfTehranKey: 17.7, uiofKey: 12, customFajrAngleKey: 18.0]
 
@@ -113,15 +115,35 @@ class UserSettings {
         }
     }
     
+    var timeIntervalsForSuhur: [Int]! {
+        set {
+            UserDefaults.standard.set(newValue, forKey: timeIntervalsSuhurKey)
+        }
+        get {
+            return UserDefaults.standard.array(forKey: timeIntervalsSuhurKey) as? [Int]
+        }
+    }
+    
+    var timeIntervalsForIftar: [Int]! {
+        set {
+            UserDefaults.standard.set(newValue, forKey: timeIntervalsIftarKey)
+        }
+        get {
+            return UserDefaults.standard.array(forKey: timeIntervalsIftarKey) as? [Int]
+        }
+    }
+    
     /// sets default settings
     func setDefaults() {
         calcMethod = univOfIslamicSciencesKarachiKey
         fajrAngle = calcMethods[univOfIslamicSciencesKarachiKey]
         autoLocation = true
         suhurAdjustment = 0
-        iftarAdjustment = 1
+        iftarAdjustment = 0
         highLatitudeFajrMethod = midnight
         notifications = true
-        hijriDateAdjustment = -1
+        hijriDateAdjustment = 0
+        timeIntervalsForSuhur = [0, 1, 2, 3, 4]
+        timeIntervalsForIftar = [2, 3, 4]
     }
 }

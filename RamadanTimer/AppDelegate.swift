@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     let center = UNUserNotificationCenter.current()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // set default settings
         if !UserDefaults.standard.bool(forKey: "hasLaunchedOnce") {
@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let options: UNAuthorizationOptions = [.alert, .sound]
         center.requestAuthorization(options: options) {
             (granted, error) in
+            UserDefaults.standard.set(granted, forKey: "notifsAuthorized")
             if !granted {
                 UserSettings.shared.notifications = false
             }
@@ -51,6 +52,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // check if notifications authorization has changed
+        center.getNotificationSettings(completionHandler: {(settings) in
+            let authorized = settings.authorizationStatus == .authorized
+            if !authorized {
+                UserSettings.shared.notifications = false
+            }
+            UserDefaults.standard.set(authorized, forKey: "notifsAuthorized")
+        })
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -63,26 +72,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.saveContext()
     }
     
-    /// Schedules notification with given title and sound
-    func scheduleNotification(title: String, sound: String, date: Date) {
+    // MARK: - Notifications
+    
+    /// Schedules new notifications while deleting old notifications that are not needed
+    func scheduleNotifications(requests: [UNNotificationRequest]) {
+        let identifiersForNew: [String] = requests.map {$0.identifier}
+        
+        center.getPendingNotificationRequests { pendingRequests in
+            // Get all pending notification requests and filter only the ones that will not be replaced
+            let identifiersForPending = pendingRequests.map {$0.identifier}
+            let toDelete = pendingRequests.filter { !identifiersForNew.contains($0.identifier)}
+            let requestsToAdd = requests.filter {
+                !identifiersForPending.contains($0.identifier)
+            }
+            let identifiersToDelete = toDelete.map {$0.identifier}
+            
+            // Delete notifications that will not be replaced
+            self.center.removePendingNotificationRequests(withIdentifiers: identifiersToDelete)
+            
+            // Add all new requests
+            for request in requestsToAdd {
+                self.center.add(request, withCompletionHandler: { (error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                })
+            }
+        }
+    }
+    
+    /// create and return notification request with given title, sound and date
+    func createNotificationRequest(title: String, sound: String, date: Date) -> UNNotificationRequest? {
         let today = Date()
         
         if today < date {
             let content = UNMutableNotificationContent()
             content.body = title
-            content.sound = UNNotificationSound.init(named: sound)
+            content.sound = UNNotificationSound.init(named: convertToUNNotificationSoundName(sound))
             let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
             let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
             // set date string as identifier
-            let identifier = stringFromDate(formatString: "dd-mm-ss", date: date)!
+            let identifier = stringFromDate(formatString: "MM-dd-yyyy-HH-mm-ss", date: date)!
             let request = UNNotificationRequest(identifier: identifier,
                                                 content: content, trigger: trigger)
-            center.add(request, withCompletionHandler: { (error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                }
-            })
+            return request
         }
+        return nil
     }
     
     /// Notification center delegate
@@ -179,3 +214,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUNNotificationSoundName(_ input: String) -> UNNotificationSoundName {
+	return UNNotificationSoundName(rawValue: input)
+}

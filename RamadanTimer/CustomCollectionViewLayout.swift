@@ -44,34 +44,9 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
             return
         }
         itemAttributes.removeAll()
-        /*if (self.itemAttributes.count > 0) {
-            for section in 0..<self.collectionView!.numberOfSections {
-                let numberOfItems : Int = self.collectionView!.numberOfItems(inSection: section)
-                for index in 0..<numberOfItems {
-                    if section != 0 && index != 0 {
-                        continue
-                    }
-                    
-                    let attributes : UICollectionViewLayoutAttributes = self.layoutAttributesForItem(at: IndexPath(item: index, section: section))!
-                    if section == 0 {
-                        var frame = attributes.frame
-                        frame.origin.y = self.collectionView!.contentOffset.y
-                        attributes.frame = frame
-                    }
-                    
-                    if index == 0 {
-                        var frame = attributes.frame
-                        frame.origin.x = self.collectionView!.contentOffset.x
-                        attributes.frame = frame
-                    }
-                }
-            }
-            return
-        }*/
         
-        if (self.itemsSize.count != numberOfColumns) {
-            self.calculateItemsSize()
-        }
+        itemsSize.removeAll()
+        self.calculateItemsSize()
         
         var column = 0
         var xOffset : CGFloat = 0
@@ -129,7 +104,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
     }
     
     func sizeForItemWithColumnIndex(columnIndex: Int) -> CGSize {
-        if UIDevice.current.userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad || UIApplication.shared.statusBarOrientation.isLandscape {
             return CGSize(width: (collectionView?.bounds.width)!/4, height: 30)
         }
         var text : String = ""
@@ -146,7 +121,7 @@ class CustomCollectionViewLayout: UICollectionViewLayout {
             text = "Col 4"
         }
         
-        let size : CGSize = (text as NSString).size(withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17.0)])
+        let size : CGSize = (text as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)])
         let width : CGFloat = size.width + 25
         return CGSize(width:width, height:30)
     }

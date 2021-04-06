@@ -20,8 +20,8 @@ class SimpleImageSlideshow: UIView {
     /// the index of the displayed image
     var currentIndex: Int = 0
     
-    /// view can be dragged around in superview, default = true
-    var draggable = true
+    /// view can be dragged around in superview, default = false
+    var draggable = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)

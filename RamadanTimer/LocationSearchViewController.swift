@@ -8,10 +8,11 @@
 
 import UIKit
 
-class LocationSearchViewController: UITableViewController, UISearchBarDelegate {
+class LocationSearchViewController: UITableViewController, UISearchBarDelegate{
     
     /// all cities
     var cities: [City] = []
+    
     /// filtered cities after search
     var filteredCities: [City] = []
     
@@ -57,7 +58,7 @@ class LocationSearchViewController: UITableViewController, UISearchBarDelegate {
         self.tableView.deselectRow(at: indexPath, animated: true)
         let requiredCities = shouldShowSearchResults ? filteredCities : cities
         selectedCity = requiredCities[indexPath.row]
-        performSegue(withIdentifier: "locationDetailSegue", sender: nil)
+        confirmLocationChange()
     }
     
     // MARK: - Search
@@ -89,16 +90,22 @@ class LocationSearchViewController: UITableViewController, UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
-    
-    // MARK: - Navigation
+    /// Show alert to confirm change of location
+    func confirmLocationChange() {
+        let alertController = UIAlertController(title: "Change Location", message:
+            "Are you sure you want to change your location to \(selectedCity.name ?? ""), \(selectedCity.country ?? "")?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+            _ in
+            // change location
+            LocationUtil.shared.location.lat = self.selectedCity.latitude!.doubleValue
+            LocationUtil.shared.location.long = self.selectedCity.longitude!.doubleValue
+            LocationUtil.shared.locationName = "\(self.selectedCity.name!), \(self.selectedCity.country!)"
+            LocationUtil.shared.saveNewLocation()
+            LocationUtil.shared.delegate.locationUpdated()
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Pass the selected city to the new view controller.
-        if let locationDetail = segue.destination as? LocationDetailViewController {
-            locationDetail.location = selectedCity
-        }
+        self.present(alertController, animated: true, completion: nil)
     }
-    
-
 }

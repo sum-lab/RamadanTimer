@@ -29,19 +29,19 @@ class LocationUtil: NSObject, CLLocationManagerDelegate {
     /// set up location
     func setUpLocation() {
         // Ask for Authorisation from the User.
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         if UserSettings.shared.autoLocation {
             // auto location
             if CLLocationManager.locationServicesEnabled() {
                 locationManager.delegate = self
-                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
                 self.locationManager.startUpdatingLocation()
             }
         }
         else {
             getSavedLocation()
-            self.delegate.locationUpdated()
             self.locationSet = true
+            self.delegate.locationUpdated()
         }
     }
     
@@ -54,18 +54,21 @@ class LocationUtil: NSObject, CLLocationManagerDelegate {
         // Display city and country
         locationNameFromCoordinates(location: manager.location!, completion: {
             address in
-            self.locationName = address 
-            self.delegate.locationUpdated()
+            self.locationName = address
             self.locationSet = true
+            self.delegate.locationUpdated()
         })
         saveNewLocation()
         locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        if !locationAuthorized() {
+            UserSettings.shared.autoLocation = false
+        }
         getSavedLocation()
-        self.delegate.locationUpdated()
         self.locationSet = true
+        self.delegate.locationUpdated()
     }
     
     /// save location to user defaults
@@ -81,6 +84,14 @@ class LocationUtil: NSObject, CLLocationManagerDelegate {
         // location default set to Makkah
         location = savedLocation == (0,0) ? (21.42667, 39.82611) : savedLocation
         locationName = UserDefaults.standard.string(forKey: "locationName") ?? "Makkah, Saudi Arabia"
+    }
+    
+    /// check if user has authorized location access
+    func locationAuthorized() -> Bool {
+        if CLLocationManager.authorizationStatus() == .denied {
+            return false
+        }
+        return true
     }
 }
 

@@ -34,7 +34,7 @@ class CalculationMethodsTableViewController: UITableViewController {
         // Configure the cell...
         cell.textLabel?.text = keys[indexPath.row]
         cell.detailTextLabel?.text = "Fajr Angle: \(calcMethods[keys[indexPath.row]]!)°"
-        if indexPath.row == keys.index(of: UserSettings.shared.calcMethod) {
+        if indexPath.row == keys.firstIndex(of: UserSettings.shared.calcMethod) {
             cell.accessoryType = .checkmark
         }
 
@@ -48,7 +48,7 @@ class CalculationMethodsTableViewController: UITableViewController {
         // save selected value
         UserSettings.shared.fajrAngle = selectedValue
         UserSettings.shared.calcMethod = keys[indexPath.row]
-        AlarmManager.shared.scheduleAllNotificationsIfNeeded()
+        AlarmManager.shared.update()
     }
 
     /*

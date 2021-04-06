@@ -118,11 +118,13 @@ class SuhurAndIftarCalculator {
         } else if (suhurLocalT < 0) {
             suhurLocalT = suhurLocalT + 24;
         }
+        // round off
+        suhurLocalT = floor(suhurLocalT*60)/60
         let adjustment = Double(UserSettings.shared.suhurAdjustment) / 60
         return suhurLocalT + adjustment
     }
     
-    /// Returns iftar time
+    /// Returns iftar time in hours
     func iftarTime() -> Double {
         let location = LocationUtil.shared.location
         let day = Double(dayOfYearFrom(date: self.date))
@@ -193,6 +195,8 @@ class SuhurAndIftarCalculator {
         } else if (iftarLocalT < 0) {
             iftarLocalT = iftarLocalT + 24;
         }
+        // round off
+        iftarLocalT = ceil(iftarLocalT*60)/60
         let adjustment = Double(UserSettings.shared.iftarAdjustment) / 60
         return iftarLocalT + adjustment
     }

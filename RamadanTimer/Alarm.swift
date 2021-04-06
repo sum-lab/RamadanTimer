@@ -14,7 +14,9 @@ enum AlarmType : String {
 }
 
 class Alarm {
+    /// suhur or iftar
     var type: AlarmType
+    /// date at which alarm is triggered
     var date: Date
     
     init(date: Date, type: AlarmType) {

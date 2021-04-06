@@ -53,7 +53,7 @@ class HighLatFajrMethodViewController: UITableViewController {
         // Configure the cell...
         cell.textLabel?.text = fajrMethods[indexPath.row]
         // check selected method
-        if indexPath.row == fajrMethods.index(of: UserSettings.shared.highLatitudeFajrMethod) {
+        if indexPath.row == fajrMethods.firstIndex(of: UserSettings.shared.highLatitudeFajrMethod) {
             cell.accessoryType = .checkmark
         }
         
@@ -66,7 +66,7 @@ class HighLatFajrMethodViewController: UITableViewController {
         let selectedValue = fajrMethods[indexPath.row]
         // save selected value
         UserSettings.shared.highLatitudeFajrMethod = selectedValue
-        AlarmManager.shared.scheduleAllNotificationsIfNeeded()
+        AlarmManager.shared.update()
     }
 
     /*

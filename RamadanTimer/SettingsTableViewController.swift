@@ -37,12 +37,34 @@ class SettingsTableViewController: UITableViewController {
     /// Alarm and Auto location switches on/off
     @objc func switchChanged(sender: UISwitch) {
         if sender == alarmSwitch {
-            UserSettings.shared.notifications = sender.isOn
-            AlarmManager.shared.alarmSwitchChanged(state: sender.isOn)
+            // Toggle alarm only if user has allowed notifications
+            if UserDefaults.standard.bool(forKey: "notifsAuthorized") {
+                UserSettings.shared.notifications = sender.isOn
+                AlarmManager.shared.alarmSwitchChanged(state: sender.isOn)
+            }
+            else {
+                sender.isOn = false
+                showErrorAlert(title: "Notifications Disabled", message:
+                "Please enable notifications for this app from Settings -> RamadanTimer")
+            }
         }
         else if sender == autoLocationSwitch {
-            UserSettings.shared.autoLocation = sender.isOn
-            tableView.reloadData()
+            // Toggle auto location only if user has allowed location access
+            if LocationUtil.shared.locationAuthorized() {
+                UserSettings.shared.autoLocation = sender.isOn
+                tableView.reloadRows(at: [IndexPath(row: 1, section: 4)], with: .none)
+                if sender.isOn {
+                    LocationUtil.shared.setUpLocation()
+                }
+            }
+            // show alert requesting user to allow location access
+            else {
+                if sender.isOn == true {
+                    sender.isOn = false
+                    showErrorAlert(title: "Auto Location", message:
+                    "Please enable location services for this app from Settings -> Privacy")
+                }
+            }
         }
     }
 
@@ -55,7 +77,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch (section){
         case 0:
-            return 1
+            return 2
         case 1:
             return 2
         case 2:
@@ -70,7 +92,6 @@ class SettingsTableViewController: UITableViewController {
             return 0
         }
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -78,13 +99,22 @@ class SettingsTableViewController: UITableViewController {
 
         // Configure the cell...
         cell.accessoryType = .disclosureIndicator
+        cell.accessoryView = nil
+        cell.isUserInteractionEnabled = true
+        cell.textLabel?.isEnabled = true
+        cell.detailTextLabel?.isEnabled = true
         cell.detailTextLabel?.font = UIFont.preferredFont(forTextStyle: .caption2)
         cell.detailTextLabel?.text = ""
         if indexPath.section == 0 {
-            cell.accessoryType = .none
-            cell.textLabel?.text = "Alarm"
-            cell.accessoryView = alarmSwitch
-            cell.selectionStyle = .none
+            if indexPath.row == 0 {
+                cell.accessoryType = .none
+                cell.textLabel?.text = "Notifications"
+                cell.accessoryView = alarmSwitch
+                cell.selectionStyle = .none
+            }
+            else if indexPath.row == 1 {
+                cell.textLabel?.text = "Customize Notification Intervals"
+            }
         }
         else if indexPath.section == 1 {
             if indexPath.row == 0 {
@@ -142,23 +172,27 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: CGRect.zero)
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        let label = UILabel(frame: CGRect(x: 30, y: 0, width:
+            tableView.bounds.size.width, height: tableView.bounds.size.height))
         label.textColor = blueColor
         label.backgroundColor = UIColor.clear
         label.font = UIFont(name: "Helvetica-Bold", size: 16)
         if section == 2 {
-            label.text = "  High Latitude"
+            label.text = "High Latitude"
         }
         if section == 3 {
-            label.text = "  Adjustments"
+            label.text = "Adjustments"
         }
         if section == 4 {
-            label.text = "  Location"
+            label.text = "Location"
         }
         label.sizeToFit()
-        return label
+        headerView.addSubview(label)
+        return headerView
     }
-    
+        
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 2 || section == 3 || section == 4 {
             return 35.0
@@ -171,6 +205,9 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // Navigate to selected setting
+        if indexPath.section == 0 {
+            performSegue(withIdentifier: "intervalOptionsSegue", sender: nil)
+        }
         if indexPath.section == 1 {
             if indexPath.row == 0 {
                 performSegue(withIdentifier: "calcMethodsSegue", sender: nil)
