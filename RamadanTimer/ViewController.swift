@@ -17,7 +17,6 @@ class ViewController: UIViewController, LocationDelegate {
     var locationSet = false
     
     var timer = Timer()
-    private var dateTimer: Timer!
     
     /// App Delegate
     let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -58,19 +57,17 @@ class ViewController: UIViewController, LocationDelegate {
         LocationUtil.shared.setUpLocation()
         
         // display date
-        updateDates()
         updateLabels()
                 
         // start timer
         timer.invalidate()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateLabels), userInfo: nil, repeats: true)
-        dateTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateDates), userInfo: nil, repeats: true)
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // update dates
+        updateLabels()
         hideSlideshowIfNeeded()
     }
     
@@ -95,9 +92,8 @@ class ViewController: UIViewController, LocationDelegate {
         titleLabel2.text = "Time left for \(string)"
         let timeLeft = date.timeIntervalSinceNow
         timeLeftLabel.text = stringFromTimeInterval(interval: timeLeft)
-    }
-    
-    @objc private func updateDates() {
+        
+        // set date labels
         dateLabel.text = stringFromDate(formatString: "EEEE, MMM d, yyyy", date: Date())
         hijriDateLabel.text = currentHijriDateString()
     }

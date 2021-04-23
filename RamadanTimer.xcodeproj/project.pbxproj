@@ -43,6 +43,19 @@
 		29FC56961EF83AD700B1D443 /* SimpleImageSlideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC56951EF83AD700B1D443 /* SimpleImageSlideshow.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		29CB4FF9261C735D00EF71E3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		29084D3A1EFD4B5C001E6848 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		29084D3C1EFE9175001E6848 /* CalculationMethodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculationMethodsTableViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +66,7 @@
 		296A7A931F795F9C00F3B608 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		297777FD1ECAF79B00E21949 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		29B8BB5C1EDE0223006E3FD0 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		29CB4FF0261C735D00EF71E3 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		29CFF89C1D964A0800AA3652 /* RamadanTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RamadanTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29CFF89F1D964A0800AA3652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29CFF8A11D964A0900AA3652 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				297777FD1ECAF79B00E21949 /* CoreLocation.framework */,
+				29CB4FF0261C735D00EF71E3 /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -226,6 +241,7 @@
 				29CFF8981D964A0800AA3652 /* Sources */,
 				29CFF8991D964A0800AA3652 /* Frameworks */,
 				29CFF89A1D964A0800AA3652 /* Resources */,
+				29CB4FF9261C735D00EF71E3 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -242,7 +258,7 @@
 		29CFF8941D964A0800AA3652 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = Sumayyah;
 				TargetAttributes = {
@@ -464,9 +480,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 2.1;
 				DEVELOPMENT_TEAM = LFQH4LZUKK;
 				INFOPLIST_FILE = RamadanTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.technonstop.RamadanTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -478,9 +496,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 2.1;
 				DEVELOPMENT_TEAM = LFQH4LZUKK;
 				INFOPLIST_FILE = RamadanTimer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.technonstop.RamadanTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

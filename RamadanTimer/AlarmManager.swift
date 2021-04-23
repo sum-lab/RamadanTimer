@@ -23,13 +23,20 @@ class AlarmManager {
     /// the next suhur or iftar date
     var nextAlarm: Alarm
     
+    /// timer to update next alarm date
+    private var updateTimer: Timer!
+    
     init() {
         nextAlarm = AlarmManager.nextAlarm()
+        updateTimer = Timer(fireAt: nextAlarm.date, interval: 0, target: self, selector: #selector(update), userInfo: nil, repeats: false)
+        RunLoop.main.add(updateTimer, forMode: .common)
     }
     
-    func update() {
+    @objc func update() {
         nextAlarm = AlarmManager.nextAlarm()
         scheduleAllNotificationsIfNeeded()
+        updateTimer = Timer(fireAt: nextAlarm.date, interval: 0, target: self, selector: #selector(update), userInfo: nil, repeats: false)
+        RunLoop.main.add(updateTimer, forMode: .common)
     }
     
     /// Returns array of suhur timings for next 6 days
