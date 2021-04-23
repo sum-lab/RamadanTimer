@@ -112,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
             let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
             // set date string as identifier
-            let identifier = stringFromDate(formatString: "MM-dd-yyyy-HH-mm-ss", date: date)!
+            let identifier = stringFromDate(formatString: "MM-dd-yyyy-HH-mm-ss", date: date)! + title
             let request = UNNotificationRequest(identifier: identifier,
                                                 content: content, trigger: trigger)
             return request
